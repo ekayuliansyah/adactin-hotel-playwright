@@ -31,12 +31,13 @@ jobs:
 
     - name: Run All Automation Tests (Parallel Mode)
       env:
+        # Variabel ini mengambil nilai dari GitHub Secrets
         BASE_URL: ${{ secrets.BASE_URL }}
         ADACTIN_USERNAME: ${{ secrets.ADACTIN_USERNAME }}
         ADACTIN_PASSWORD: ${{ secrets.ADACTIN_PASSWORD }}
-      # dbus-run-session menjamin kestabilan browser headless saat berjalan paralel di Linux
       run: |
-        dbus-run-session -- pytest -n auto --alluredir=allure-results
+        # Menjalankan pytest dengan mengirimkan parameter --base-url secara eksplisit
+        dbus-run-session -- pytest -n auto --alluredir=allure-results --base-url=$BASE_URL
 
     - name: Upload Allure Results Artifact
       uses: actions/upload-artifact@v4

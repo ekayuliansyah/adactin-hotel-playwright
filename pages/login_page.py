@@ -1,3 +1,4 @@
+import os
 from playwright.sync_api import Page
 
 class LoginPage:
@@ -9,9 +10,17 @@ class LoginPage:
         self.login_button = page.locator("#login")
         self.error_message = page.locator(".auth_error") # Untuk validasi jika login gagal
 
-    def navigate(self, base_url: str):
-        """Membuka halaman utama Adactin Hotel"""
-        self.page.goto(base_url)
+    def navigate(self, base_url: str = None):
+        """
+        Membuka halaman utama Adactin Hotel.
+        Jika base_url tidak diberikan, gunakan dari environment variable (yang diset di conftest.py)
+        """
+        url = base_url if base_url else os.environ.get("BASE_URL")
+        
+        if not url:
+            raise ValueError("BASE_URL belum diset! Pastikan pytest dijalankan dengan parameter --base-url.")
+            
+        self.page.goto(url)
 
     def login(self, username: str, password: str):
         """Melakukan aksi pengisian form login hingga klik tombol submit"""

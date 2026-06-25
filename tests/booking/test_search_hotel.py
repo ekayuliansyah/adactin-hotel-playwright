@@ -6,11 +6,12 @@ from pages.login_page import LoginPage
 from pages.search_hotel_page import SearchHotelPage
 from dotenv import load_dotenv
 
-load_dotenv()
-BASE_URL = os.getenv("BASE_URL")
-USERNAME = os.getenv("ADACTIN_USERNAME")
-PASSWORD = os.getenv("ADACTIN_PASSWORD")
+load_dotenv(override=True)
 
+# 2. Jika os.getenv menghasilkan string kosong "", Python akan otomatis memakai string di sebelah kanan 'or'
+BASE_URL = os.getenv("BASE_URL") or "https://adactinhotelapp.com/"
+USERNAME = os.getenv("ADACTIN_USERNAME") or "IsiUsernameDummyAndaDisini"
+PASSWORD = os.getenv("ADACTIN_PASSWORD") or "IsiPasswordDummyAndaDisini"
 @pytest.fixture(autouse=True)
 def setup_search_page(page: Page):
     """Fixture otomatis untuk login dan stand by di halaman Search Hotel"""

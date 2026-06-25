@@ -10,10 +10,10 @@ from pages.book_hotel_page import BookHotelPage
 from utils.generator import generate_fake_credit_card, generate_fake_cvv
 from dotenv import load_dotenv
 
-load_dotenv()
-BASE_URL = os.getenv("BASE_URL")
-USERNAME = os.getenv("ADACTIN_USERNAME")
-PASSWORD = os.getenv("ADACTIN_PASSWORD")
+load_dotenv(override=True)
+BASE_URL = os.getenv("BASE_URL") or "https://adactinhotelapp.com/"
+USERNAME = os.getenv("ADACTIN_USERNAME") or "IsiUsernameAdactinAnda"
+PASSWORD = os.getenv("ADACTIN_PASSWORD") or "IsiPasswordAdactinAnda"
 
 @pytest.fixture
 def setup_book_page(page: Page) -> BookHotelPage:

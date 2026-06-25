@@ -1,0 +1,32 @@
+{
+  "valid_search_complete": {
+    "location": "Sydney",
+    "hotel": "Hotel Creek",
+    "room_type": "Standard",
+    "rooms": "1",
+    "check_in": "01/07/2026",
+    "check_out": "15/07/2026",
+    "adults": "1",
+    "children": "0"
+  },
+  "paris_long_stay": {
+    "location": "Paris",
+    "hotel": "",
+    "room_type": "",
+    "rooms": "1",
+    "check_in": "24/05/2026",
+    "check_out": "25/06/2026",
+    "adults": "2",
+    "children": "1"
+  },
+  "billing_info": {
+    "first_name": "John",
+    "last_name": "Doe",
+    "address": "123 Senior QA Automation Street, Jakarta",
+    "cc_type": "VISA",
+    "cc_exp_month": "12",
+    "cc_exp_year": "2027",
+    "expected_price_per_night": "AUD $ 125",
+    "expected_total_days": "14 Day(s)"
+  }
+}

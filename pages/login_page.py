@@ -13,16 +13,12 @@ class LoginPage:
     def navigate(self, base_url: str = None):
         """
         Membuka halaman utama Adactin Hotel.
-        Jika base_url tidak diberikan, gunakan dari environment variable (yang diset di conftest.py)
+        Jika base_url tidak diberikan, gunakan dari environment variable (dari file .env).
         """
         url = base_url if base_url else os.environ.get("BASE_URL")
         
-        # --- BAGIAN PAMUNGKAS ---
-        # Jika GitHub gagal membaca rahasia dan mengirim url kosong, 
-        # kita paksa masukkan URL ini agar tidak error!
         if not url:
-            url = "https://adactinhotelapp.com/"
-        # ------------------------
+            raise ValueError("BASE_URL belum diset! Pastikan file .env terbaca dengan benar.")
             
         self.page.goto(url)
 
